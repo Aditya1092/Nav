@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Navigation</title>
+    <style>
+        .navbar{
+            background-color: black;
+            border-radius: 30px;
+            
+        }
+        .navbar ul{
+            overflow: auto;
+        }
+        .navbar li{
+            float:left;
+            list-style: none; 
+            margin: 13px 20px;
+            
+        }
+        .navbar li a{
+            padding: 3px 3px;
+            text-decoration: none;
+            color: white;
+        }
+        .navbar li a:hover{
+            color: red
+        }
+        .search{
+            float: right;
+            color: white;
+            padding: 12px 75px;
+        }
+        .navbar input{
+            border: 2px solid black;
+            border-radius: 14px;
+            padding: 3px 17px;
+            width: 129px;
+        }
+        .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+    #home{
+        background-color: aliceblue;
+        color: black;
+        text-align: center;
+    }
+    #contact{
+        background-color:rgb(255, 245, 233);
+        color: black;
+        text-align: center;
+        
+    }
+    #information{
+        background-color:rgb(235, 255, 233);
+        color: black;
+        text-align: center;
+    }
+    #guide{
+        background-color:rgb(255, 233, 233);
+        color: black;
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#information">Information</a></li>
+      <li><a href="#guide">Guide</a></li>
+                <div class="search">
+                    <input type="text" name="search" id="search" placeholder="Search this website">
+                </div>
+            </ul>
+        </div>
+    </header>
+    <div class="content">
+        <div id="home" class="hidden">
+          <h2>Home</h2>
+          <p>Welcome to the Home page!</p>
+        </div>
+    
+        <div id="contact" class="hidden">
+          <h2>Contact</h2>
+          <p>Contact information goes here.</p>
+        </div>
+    
+        <div id="information" class="hidden">
+          <h2>Information</h2>
+          <p>Additional information goes here.</p>
+        </div>
+    
+        <div id="guide" class="hidden">
+          <h2>Guide</h2>
+          <p>Guidance and instructions go here.</p>
+        </div>
+      </div>
+    
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const leftPanelLinks = document.querySelectorAll(".navbar a");
+          const contentSections = document.querySelectorAll(".content > div");
+    
+          leftPanelLinks.forEach(function(link) {
+            link.addEventListener("click", function(event) {
+              event.preventDefault();
+              const target = this.getAttribute("href").substring(1);
+    
+              // Hide all content sections
+              contentSections.forEach(function(section) {
+                section.classList.add("hidden");
+              });
+    
+              // Show the target content section
+              const targetSection = document.getElementById(target);
+              targetSection.classList.remove("hidden");
+            });
+          });
+        });
+      </script>
+</body>
+
+</html>
